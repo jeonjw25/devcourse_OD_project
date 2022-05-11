@@ -138,9 +138,9 @@ class Trainer:
             targets[...,3] *= input_wh[1]
             targets[...,5] *= input_wh[1]
 
-            with torch.no_grad():
+            with torch.no_grad(): # gradient 연산 없이 실행
                 output = self.model(input_img)
-                best_box_list = non_max_suppression(output, conf_thres=0.1, iou_thres=0.5)
+                best_box_list = non_max_suppression(output, conf_thres=0.1, iou_thres=0.5) # nms 진행
                 
             predict_all += get_batch_statistics(best_box_list, targets, iou_threshold=0.5)
                 
@@ -163,7 +163,7 @@ class Trainer:
             for i, c in enumerate(ap_class):
                 ap_table += [[c, self.class_str[c], "%.5f" % ap[i], "%.5f" % precision[i], "%.5f" % recall[i], "%.5f" % f1[i]]]
             print(AsciiTable(ap_table).table)
-        print("---- mAP {AP.mean():.5f} ----")
+        print("---- mAP {AP.mean(): %.5f} ----")
 
         for c, a, p, r, f in zip(self.class_str, ap, precision, recall, f1):
             self.torch_writer.add_scalars("Evaluation/AP", {c : a}, self.iter)
