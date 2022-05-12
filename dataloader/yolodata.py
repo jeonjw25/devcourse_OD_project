@@ -12,9 +12,9 @@ class Yolodata(Dataset):
     file_dir = ""
     anno_dir = ""
     file_txt = ""
-    train_dir = "C:\\Users\\jeonj\\Dropbox\\JongWon\\dev_course\\week13\\devcourse_OD_project-master\\datasets\\train_data"
+    train_dir = "C:\\Users\\jeonj\\Dropbox\\JongWon\\dev_course\\week13\\YOLOV3-PYTORCH-MAIN\\datasets\\train_data"
     train_txt = "all.txt"
-    valid_dir = "C:\\Users\\jeonj\\Dropbox\\JongWon\\dev_course\\week13\\devcourse_OD_project-master\\datasets\\train_data"
+    valid_dir = "C:\\Users\\jeonj\\Dropbox\\JongWon\\dev_course\\week13\\YOLOV3-PYTORCH-MAIN\\datasets\\train_data"
     valid_txt = "all.txt"
     class_str = ['left', 'right', 'stop', 'crosswalk', 'uturn', 'traffic_light']
     num_class = None
